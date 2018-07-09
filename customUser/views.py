@@ -6,6 +6,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from .models import CustomUser
+
 # def signup(request):
 #     if request.method == 'POST':
 #         form = UserCreationForm(request.POST)
@@ -29,7 +31,7 @@ def login(request, uuid):
 def login(request):
     """"""
 
-def profile(request, uuid):
-    user = get_object_or_404(User, uuid=uuid)
-    return render(request, 'customUser/profile.html', {'customUser': user})
+def profile(request, uid):
+    user = get_object_or_404(User, id=uid)
+    return render(request, 'customUser/profile.html', {'user': user})
 

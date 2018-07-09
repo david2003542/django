@@ -6,8 +6,6 @@ from .models import CustomUser
 
 class CustomUserInline(admin.StackedInline):
     model = CustomUser
-    list_display = ('username',)
-    search_fields = ['email']
 
 class UserAdmin(BaseUserAdmin):
     inlines = (CustomUserInline,)
