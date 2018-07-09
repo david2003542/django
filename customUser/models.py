@@ -1,11 +1,12 @@
 import uuid
 
+from django.contrib.auth.models import User
+from django.contrib.auth.validators import ASCIIUsernameValidator
 from django.db import models
 
-class Member(models.Model):
+class CustomUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
     GENDER_CHOICES = (
         ('MALE', 'Male'),
         ('FEMALE', 'Female'),
@@ -16,6 +17,3 @@ class Member(models.Model):
         default='MALE',
     )
     phone = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    def __str__(self):
-        return self.email
